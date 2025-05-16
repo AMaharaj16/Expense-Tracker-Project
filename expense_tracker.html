@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="expense_tracker.css">
+</head>
+<body>
+    <h1>Expense Tracker</h1>
+    <hr>
+  <div id="expense-input">
+    <input id='expense-name' placeholder="Add Expense">
+    <input id='expense-cost' placeholder='$'>
+    <select id='select-category'>
+        <option></option>
+        <option>Housing and Rent</option>
+        <option>Transportation</option>
+        <option>Insurance</option>
+        <option>Food</option>
+        <option>Utilities</option>
+        <option>Recreation</option>
+        <option>Childcare and Schooling</option>
+        <option>Other</option>
+    </select>
+    <button id='add-expense'>Add</button>
+  </div>
+
+
+<div id="layout">
+<!-- Categories: Left Side of Webpage -->
+  <div id="categories">
+    <h2><u>Current Expense Categories</u></h2>
+      <div class="category-section" id="Housing-and-Rent">
+        <h3>Housing and Rent</h3>
+        <ul></ul>
+      </div>
+
+      <div class="category-section" id="Transportation">
+        <h3>Transportation</h3>
+        <ul></ul>
+      </div>
+
+      <div class="category-section" id="Insurance">
+        <h3>Insurance</h3>
+        <ul></ul>
+      </div>
+
+      <div class="category-section" id="Food">
+        <h3>Food</h2>
+        <ul></ul>
+      </div>
+
+      <div class="category-section" id="Utilities">
+        <h3>Utilities</h3>
+        <ul></ul>
+      </div>
+
+      <div class="category-section" id="Recreation">
+        <h3>Recreation</h3>
+        <ul></ul>
+      </div>
+
+      <div class="category-section" id="Childcare-and-Schooling">
+        <h3>Childcare and Schooling</h3>
+        <ul></ul>
+      </div>
+
+      <div class="category-section" id="Other">
+        <h3>Other</h3>
+        <ul></ul>
+      </div>
+  </div>
+<!-- Categories: Right Side of Webpage -->
+  <div id="visualizations">
+    <button id="generate-visualizations">Generate Visualizations</button>
+  </div>
+</div>
+</body>
+</html>
