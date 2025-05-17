@@ -14,16 +14,16 @@
     <input id='expense-cost' placeholder='$'>
     <select id='select-category'>
         <option></option>
-        <option>Housing and Rent</option>
+        <option>Housing</option>
         <option>Transportation</option>
         <option>Insurance</option>
         <option>Food</option>
         <option>Utilities</option>
         <option>Recreation</option>
-        <option>Childcare and Schooling</option>
+        <option>Childcare</option>
         <option>Other</option>
     </select>
-    <button id='add-expense'>Add</button>
+    <button id='add-expense' onclick="addExpense()">Add</button>
   </div>
 
 
@@ -31,8 +31,8 @@
 <!-- Categories: Left Side of Webpage -->
   <div id="categories">
     <h2><u>Current Expense Categories</u></h2>
-      <div class="category-section" id="Housing-and-Rent">
-        <h3>Housing and Rent</h3>
+      <div class="category-section" id="Housing">
+        <h3>Housing</h3>
         <ul></ul>
       </div>
 
@@ -61,8 +61,8 @@
         <ul></ul>
       </div>
 
-      <div class="category-section" id="Childcare-and-Schooling">
-        <h3>Childcare and Schooling</h3>
+      <div class="category-section" id="Childcare">
+        <h3>Childcare</h3>
         <ul></ul>
       </div>
 
@@ -76,5 +76,6 @@
     <button id="generate-visualizations">Generate Visualizations</button>
   </div>
 </div>
+<script src="expense_tracker.js"></script>
 </body>
 </html>

@@ -70,7 +70,7 @@ h1 {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-#Housing-and-Rent {
+#Housing {
   background-color: #4A90E2; /* blue */
 }
 
@@ -94,7 +94,7 @@ h1 {
   background-color: #D0021B; /* red */
 }
 
-#Childcare-and-Schooling {
+#Childcare {
   background-color: #C56CF0;
 }
 
@@ -129,4 +129,17 @@ h1 {
 #generate-visualizations:active {
   transform: scale(0.98);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.delete-button {
+  padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #e74c3c;
+    color: white;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #c0392b;
 }
