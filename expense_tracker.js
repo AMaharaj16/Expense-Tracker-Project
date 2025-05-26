@@ -1,10 +1,11 @@
 const expenseName = document.getElementById('expense-name')
 const expenseCost = document.getElementById('expense-cost')
 const expenseCategory = document.getElementById('select-category')
+const totals = {};
 
 function addExpense() {
     let name = expenseName.value.trim()
-    let cost = expenseCost.value.trim()
+    let cost = parseFloat(expenseCost.value.trim())
     let category = expenseCategory.value
     if (!name || !cost || !category) {
         alert("Please fill in all fields!");
@@ -27,6 +28,8 @@ function addExpense() {
         deleteBtn.style.marginLeft = '10px'; // spacing
         deleteBtn.onclick = function () {
             ul.removeChild(li); // remove this <li> from the list
+            totals[category] -= cost
+            updateTotal(category)
         };
 
     // Add delete button to the <li>
@@ -34,7 +37,20 @@ function addExpense() {
 
     // Add the <li> to the category <ul>
     ul.appendChild(li);
+
+    if (!totals[category]) {
+        totals[category] = 0;
+    } 
+        
+    totals[category] += cost;
+    updateTotal(category);
+
     expenseName.value = '';
     expenseCost.value = '';
     expenseCategory.value = '';
+}
+
+function updateTotal(category) {
+    const categoryTotal = document.getElementById(`total-${category}`);
+    categoryTotal.textContent = `Total: $${totals[category]}`
 }
