@@ -23,14 +23,14 @@
         <option>Childcare</option>
         <option>Other</option>
     </select>
-    <button id='add-expense' onclick="addExpense()">Add</button>
+    <button id='add-expense' onclick="addExpense()">Add Expense</button>
   </div>
 
 
 <div id="layout">
 <!-- Categories: Left Side of Webpage -->
   <div id="categories">
-    <h2><u>Current Expense Categories</u></h2>
+    <h2>Current Expense Categories</h2>
       <div class="category-section" id="Housing">
         <h3>Housing</h3>
         <ul></ul>
@@ -76,14 +76,18 @@
       <div class="category-section" id="Other">
         <h3>Other</h3>
         <ul></ul>
-        <p class="total" id="total-Transportation">Total: $0</p>
+        <p class="total" id="total-Other">Total: $0</p>
       </div>
   </div>
 <!-- Categories: Right Side of Webpage -->
   <div id="visualizations">
-    <button id="generate-visualizations">Generate Visualizations</button>
+    <h2>Expense Visualizations</h2>
+    <button id="generate-visualizations" onclick="generateVisualizations()">Generate Visualizations</button>
+    <div id="PiePlot" style="width:600px;height:400px;"></div>
+    <div id="BarPlot" style="width:600px;height:400px;"></div>
   </div>
 </div>
 <script src="expense_tracker.js"></script>
+<script src="https://cdn.plot.ly/plotly-3.0.1.min.js"></script>
 </body>
 </html>

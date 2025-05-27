@@ -54,3 +54,20 @@ function updateTotal(category) {
     const categoryTotal = document.getElementById(`total-${category}`);
     categoryTotal.textContent = `Total: $${totals[category]}`
 }
+
+function generateVisualizations() {
+    let dataPie = [{
+        values: Object.values(totals),
+        labels: Object.keys(totals),
+        type: 'pie'
+    }]
+
+    let dataBar = [{
+        x: Object.keys(totals),
+        y: Object.values(totals),
+        type: 'bar'
+    }]
+
+    Plotly.newPlot("PiePlot", dataPie);
+    Plotly.newPlot("BarPlot", dataBar);
+}
