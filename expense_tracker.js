@@ -17,10 +17,10 @@ document.getElementById('add-expense').addEventListener('click', function () {
     const name = expenseName.value.trim();
     const cost = parseFloat(expenseCost.value.trim());
     const category = expenseCategory.value;
-    addExpense(name, cost, category);
+    addExpense(name, cost, category, false);
 });
 
-function addExpense(name = null, cost = null, category = null) {
+function addExpense(name = null, cost = null, category = null, fromLoad = false) {
     if (!name || !cost || !category) {
         alert("Please fill in all fields!");
         return;
@@ -61,8 +61,10 @@ function addExpense(name = null, cost = null, category = null) {
     totals[category] += cost;
     updateTotal(category);
 
-    expenses.push({name,cost,category}); // Add new expense to expenses list and save to local storage.
-    saveToLocalStorage();
+    if (!fromLoad) {
+        expenses.push({name,cost,category}); // Add new expense to expenses list and save to local storage.
+        saveToLocalStorage();
+    }
 
     expenseName.value = '';
     expenseCost.value = '';
@@ -94,5 +96,5 @@ function generateVisualizations() {
 // Retrieve all expenses and save to the expenses list, then call addExpense on each expense.
 window.onload = function () {
     expenses = loadFromLocalStorage();
-    expenses.forEach(exp => addExpense(exp.name, exp.cost, exp.category));
+    expenses.forEach(exp => addExpense(exp.name, exp.cost, exp.category, true));
 };
