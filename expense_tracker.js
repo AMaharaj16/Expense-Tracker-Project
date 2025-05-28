@@ -2,11 +2,25 @@ const expenseName = document.getElementById('expense-name')
 const expenseCost = document.getElementById('expense-cost')
 const expenseCategory = document.getElementById('select-category')
 const totals = {};
+let expenses = [];
+// Saves list of expenses to browser local storage under key 'expenses'
+function saveToLocalStorage() {
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+}
+// Retrieves all expenses
+function loadFromLocalStorage() {
+    const saved = localStorage.getItem('expenses');
+    return saved ? JSON.parse(saved) : [];
+}
+// Had to attach the id to the onlick function here due to parameters in the function.
+document.getElementById('add-expense').addEventListener('click', function () {
+    const name = expenseName.value.trim();
+    const cost = parseFloat(expenseCost.value.trim());
+    const category = expenseCategory.value;
+    addExpense(name, cost, category);
+});
 
-function addExpense() {
-    let name = expenseName.value.trim()
-    let cost = parseFloat(expenseCost.value.trim())
-    let category = expenseCategory.value
+function addExpense(name = null, cost = null, category = null) {
     if (!name || !cost || !category) {
         alert("Please fill in all fields!");
         return;
@@ -17,9 +31,9 @@ function addExpense() {
         return
     }
 
-    var ul = document.querySelector(`#${expenseCategory.value} ul`);
+    var ul = document.querySelector(`#${category} ul`);
     var li = document.createElement('li');
-    li.appendChild(document.createTextNode(`${name} - $${expenseCost.value}`));
+    li.appendChild(document.createTextNode(`${name} - $${cost}`));
     ul.appendChild(li);
 
     var deleteBtn = document.createElement('button');
@@ -30,6 +44,8 @@ function addExpense() {
             ul.removeChild(li); // remove this <li> from the list
             totals[category] -= cost
             updateTotal(category)
+            expenses = expenses.filter(e => !(e.name === name && e.cost === cost && e.category === category)); // Remove expense from expenses with the same name, cost, and category
+            saveToLocalStorage();
         };
 
     // Add delete button to the <li>
@@ -44,6 +60,9 @@ function addExpense() {
         
     totals[category] += cost;
     updateTotal(category);
+
+    expenses.push({name,cost,category}); // Add new expense to expenses list and save to local storage.
+    saveToLocalStorage();
 
     expenseName.value = '';
     expenseCost.value = '';
@@ -71,3 +90,9 @@ function generateVisualizations() {
     Plotly.newPlot("PiePlot", dataPie);
     Plotly.newPlot("BarPlot", dataBar);
 }
+
+// Retrieve all expenses and save to the expenses list, then call addExpense on each expense.
+window.onload = function () {
+    expenses = loadFromLocalStorage();
+    expenses.forEach(exp => addExpense(exp.name, exp.cost, exp.category));
+};
