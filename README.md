@@ -22,10 +22,6 @@ A simple and intuitive browser-based expense tracker built with **HTML, CSS, and
 ## Try It Yourself
 
 1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-username/expense-tracker.git
-   cd expense-tracker
-   ```
 
 2. Just open `expense_tracker.html` in your browser.
 
